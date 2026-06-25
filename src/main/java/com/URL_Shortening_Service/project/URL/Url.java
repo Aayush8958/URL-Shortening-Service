@@ -1,9 +1,6 @@
 package com.URL_Shortening_Service.project.URL;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.Instant;
@@ -16,6 +13,7 @@ public class Url {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String url;
+    @Column(unique = true)
     String shortcode;
     Instant createdAt;
     Instant updatedAt;

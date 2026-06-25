@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Repo extends JpaRepository<Url,Integer> {
 
-    Url findByShortcode(String shortCode);
+    Url findByShortcode(String shortcode);
+
     boolean existsByShortcode(String Shortcode);
 
-    void deleteByShortCode(String shortcode);
+    void deleteByShortcode(String shortcode);
 }

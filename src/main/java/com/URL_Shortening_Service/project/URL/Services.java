@@ -1,19 +1,20 @@
 package com.URL_Shortening_Service.project.URL;
 
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Base64;
 
-@AllArgsConstructor
+
 @Service
 public class Services {
 Repo repo;
+    public Services(Repo repo) {
+        this.repo = repo;
+    }
 
 public ResponseEntity<String> ConvertUrl(String url){
 
@@ -51,8 +52,11 @@ public ResponseEntity<String> Update(String shortCode,String updated){
         repo.save(url);
     return new ResponseEntity<>("Short Url updated",HttpStatus.CREATED);
 }
-public ResponseEntity<String> Delete(String shortCode){
-    repo.deleteByShortCode(shortCode);
+
+
+
+    public ResponseEntity<String> Delete(String shortCode){
+    repo.deleteByShortcode(shortCode);
     return new ResponseEntity<>("Deleted",HttpStatus.NO_CONTENT);
 }
 }
